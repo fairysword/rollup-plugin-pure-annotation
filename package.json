@@ -1,0 +1,24 @@
+{
+  "name": "rollup-plugin-pure-annotation",
+  "version": "0.0.1",
+  "description": "add pure annotation",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "pure annotation",
+    "rollup-plugin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fairysword/rollup-plugin-pure-annotation.git"
+  },
+  "author": "xiongjunhui",
+  "license": "MIT",
+  "dependencies": {
+    "babylon": "^6.18.0",
+    "recast": "^0.18.5"
+  },
+  "files": [
+    "index.js"
+  ]
+}
