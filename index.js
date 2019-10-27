@@ -1,14 +1,19 @@
 
 const recast = require("recast");
+const micromatch = require('micromatch');
+
 const PURE_REG = /\/\*#__PURE__\*\/\s*/gm;
 const PURE_ANNO = '#__PURE__'
 
-function pureanno(options) {
+function pureanno(options) { // 忽略的文件夹
+    const includes = options && options.includes || ['**/*.js', '**/*.ts']
+    const excludes = options && options.excludes || []
+
     return {
         name: 'rollup-pure-annotation',
         transform(code, id) {
             var transformed = false
-            if ((id.endsWith('.js') || id.endsWith('.ts')) && !id.includes('Models')) {
+            if (micromatch.isMatch(id, includes) && !micromatch.isMatch(id, excludes)) {
                 const hasPureAnnotation = comments => comments && comments.length === 1 && (comments[0]|| {}).value === PURE_ANNO
 
                 const ast = recast.parse(code, {
