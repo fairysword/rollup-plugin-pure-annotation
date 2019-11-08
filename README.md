@@ -10,3 +10,20 @@ const COLOR_MAIN = /*#__PURE__*/ valueOnPlatform({
 ```
 
 `COLOR_MAIN` will be removed if it is not referenced
+
+## Options
+
+```
+const defaultConfig = {
+        plugins: [
+            tsc(require(path.resolve(projectPath, './tsconfig.json'))),
+            pureanno({
+                includes: ['**/*.js', '**/*.ts']
+            }),
+            babel()
+        ]
+    };
+```
+`includes` which files you want to process
+
+`excludes` which files you don't want to process
